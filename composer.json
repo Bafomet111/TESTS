@@ -1,5 +1,7 @@
 {
     "name": "bafomet/tests",
+    "license": "MIT",
+    "description": "testing",
     "authors": [
         {
             "name": "bafomet",
