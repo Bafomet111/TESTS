@@ -5,6 +5,8 @@ on:
     branches: [ $default-branch ]
   pull_request:
     branches: [ $default-branch ]
+  workflow_dispatch:
+
 
 permissions:
   contents: read
@@ -32,8 +34,19 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
 
-    # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
-    # Docs: https://getcomposer.org/doc/articles/scripts.md
+  run-tests:
+    needs: install-dependencies
+    runs-on: ubuntu-latest
 
-    # - name: Run test suite
-    #   run: composer run-script test
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Restore cached dependencies
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+
+      - name: Run Tests
+        if: ${{ github.event_name == 'workflow_dispatch' }}
+        run: ./vendor/bin/phpunit ./tests
