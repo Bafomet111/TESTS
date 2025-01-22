@@ -48,19 +48,18 @@ class QuadraticEquationsTest extends TestCase
     }
 
     /**
-     * Не получается написать этот тест должным образом, либо в функции что-то не так
      * @throws Exception
      */
-//    public function testWithDiscriminantLessEpsilon()
-//    {
-//        $a = PHP_FLOAT_MIN;
-//        $b = sqrt(PHP_FLOAT_MIN);
-//        $c = 0.25 * PHP_FLOAT_MIN;
-//
-//        $result = $this->getSolver()->solve($a, $b, $c);
-//
-//        $this->assertEquals([-1], $result);
-//    }
+    public function testWithDiscriminantLessEpsilon(): void
+    {
+        $a = 1;
+        $b = 2;
+        $c = (4 - PHP_FLOAT_EPSILON / 2.0) / 4;
+
+        $result = $this->getSolver()->solve($a, $b, $c);
+
+        $this->assertEquals([-1], $result);
+    }
 
     /**
      * @dataProvider invalidStringArguments
