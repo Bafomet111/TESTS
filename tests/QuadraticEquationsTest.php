@@ -10,7 +10,7 @@ class QuadraticEquationsTest extends TestCase
     /**
      * @throws Exception
      */
-    public function testNoRoots()
+    public function testNoRoots(): void
     {
         $result = $this->getSolver()->solve(1, 0, 1);
 
@@ -20,7 +20,7 @@ class QuadraticEquationsTest extends TestCase
     /**
      * @throws Exception
      */
-    public function testHasTwoRoots()
+    public function testHasTwoRoots(): void
     {
         $result = $this->getSolver()->solve(1, 0, -1);
 
@@ -30,18 +30,18 @@ class QuadraticEquationsTest extends TestCase
     /**
      * @throws Exception
      */
-    public function testHasOnlyOneRoot()
+    public function testHasOnlyOneRoot(): void
     {
         $result = $this->getSolver()->solve(1, 2, 1);
 
-        // equals сравнивает не строго. Как быть здесь?
         $this->assertEquals([-1], $result);
     }
 
     /**
      * @throws Exception
      */
-    public function testACanNotBeZero() {
+    public function testACanNotBeZero(): void
+    {
         $this->expectException(\Exception::class);
 
         $this->getSolver()->solve(0, 0, 1);
@@ -66,7 +66,8 @@ class QuadraticEquationsTest extends TestCase
      * @return void
      * @throws Exception
      */
-    public function testStringArguments(mixed $a, mixed $b, mixed $c) {
+    public function testStringArguments(mixed $a, mixed $b, mixed $c): void
+    {
         $this->expectException(\TypeError::class);
 
         $this->getSolver()->solve($a, $b, $c);
@@ -77,7 +78,8 @@ class QuadraticEquationsTest extends TestCase
      * @return void
      * @throws Exception
      */
-    public function testNullArguments(mixed $a, mixed $b, mixed $c) {
+    public function testNullArguments(mixed $a, mixed $b, mixed $c): void
+    {
         $this->expectException(\TypeError::class);
 
         $this->getSolver()->solve($a, $b, $c);
