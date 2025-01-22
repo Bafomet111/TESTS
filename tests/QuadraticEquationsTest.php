@@ -75,7 +75,6 @@ class QuadraticEquationsTest extends TestCase
 
     /**
      * @dataProvider invalidNullArguments
-     * @return void
      * @throws Exception
      */
     public function testNullArguments(mixed $a, mixed $b, mixed $c): void
