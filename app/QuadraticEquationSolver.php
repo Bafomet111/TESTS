@@ -11,7 +11,7 @@ class QuadraticEquationSolver
      */
     public function solve(float $a, float $b, float $c): array
     {
-        if ($a < PHP_FLOAT_EPSILON && $a > -PHP_FLOAT_EPSILON) {
+        if ($a < PHP_FLOAT_MIN && $a > -PHP_FLOAT_MIN) {
             throw new \Exception('A coefficient cannot be zero');
         }
 
