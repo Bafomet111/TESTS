@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\SpaceGame;
+namespace App\Modules\SpaceGame\Moving;
 
 interface IMovable
 {

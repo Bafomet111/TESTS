@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Modules\SpaceGame;
+namespace App\Modules\SpaceGame\Moving;
 
-final readonly class Velocity
+final class Location
 {
     public function __construct(
         public int $x,

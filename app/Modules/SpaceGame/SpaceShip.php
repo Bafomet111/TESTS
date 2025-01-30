@@ -4,29 +4,24 @@ declare(strict_types=1);
 
 namespace App\Modules\SpaceGame;
 
-final class SpaceShip implements IMovable
+final class SpaceShip implements UObject
 {
-    private Location $location;
+    private array $properties = [];
 
-    private Velocity $velocity;
-
-    public function __construct()
+    /**
+     * @throws \Exception
+     */
+    public function getProperty(string $key): object
     {
-        $this->velocity = new Velocity(1, 2);
+        if (!array_key_exists($key, $this->properties)) {
+            throw new \Exception("Undefined property $key");
+        }
+
+        return $this->properties[$key];
     }
 
-    public function getLocation(): Location
+    public function setProperty(string $key, object $value): void
     {
-        return $this->location;
-    }
-
-    public function setLocation(Location $location): void
-    {
-        $this->location = $location;
-    }
-
-    public function getVelocity(): Velocity
-    {
-        return $this->velocity;
+        $this->properties[$key] = $value;
     }
 }
