@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
+use App\Modules\Quadratic\QuadraticEquationSolver;
 use PHPUnit\Framework\TestCase;
-use App\QuadraticEquationSolver;
 
 class QuadraticEquationsTest extends TestCase
 {
