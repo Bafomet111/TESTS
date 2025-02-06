@@ -6,6 +6,7 @@ namespace Command;
 
 use App\Modules\Command\Commands\FirstCommand;
 use App\Modules\Command\Commands\SaveLogCommand;
+use App\Modules\Command\Commands\SecondCommand;
 use App\Modules\Command\SimpleQueue;
 use PHPUnit\Framework\TestCase;
 
@@ -23,7 +24,7 @@ class SimpleQueueTest extends TestCase
     public function testCorrectFIFO(): void
     {
         $command1 = new FirstCommand();
-        $command2 = new SaveLogCommand();
+        $command2 = new SaveLogCommand(new \Exception(), new SecondCommand());
 
         $queue = new SimpleQueue();
 
