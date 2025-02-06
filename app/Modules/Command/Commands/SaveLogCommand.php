@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Modules\Command\Commands;
 
-use App\Modules\Command\ICommand;
 use App\Modules\Command\Log\Logger;
 
 final readonly class SaveLogCommand implements ICommand
@@ -17,10 +16,9 @@ final readonly class SaveLogCommand implements ICommand
 
     public function execute(): void
     {
-        Logger::log("
-            The command {$this->command::class} 
-            failed with exception: {$this->exception::class}. 
-            Message: {$this->exception->getMessage()}
-        ");
+        $commandName = get_class($this->command);
+        $exceptionName = get_class($this->exception);
+
+        Logger::log("The command {$commandName} failed with exception: {$exceptionName}. Message: {$this->exception->getMessage()}");
     }
 }

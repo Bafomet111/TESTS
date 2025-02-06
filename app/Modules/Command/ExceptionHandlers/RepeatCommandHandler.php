@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace App\Modules\Command\ExceptionHandlers;
 
 use App\Modules\Command\Commands\ICommand;
-use App\Modules\Command\Commands\SaveLogCommand;
+use App\Modules\Command\Commands\RepeatCommand;
 use App\Modules\Command\IQueue;
 
-final readonly class LogCommandHandler implements IHandler
+final readonly class RepeatCommandHandler implements IHandler
 {
     public function __construct(
         private IQueue $queue,
@@ -19,7 +19,7 @@ final readonly class LogCommandHandler implements IHandler
 
     public function handle(): void
     {
-        $command = new SaveLogCommand($this->exception, $this->command);
+        $command = new RepeatCommand($this->command);
 
         $this->queue->addCommand($command);
     }
