@@ -10,7 +10,7 @@ final readonly class Angle
 {
     public function __construct(
         public int $value,
-        public int $dimension,
+        public int|float $dimension,
     ) {
     }
 
