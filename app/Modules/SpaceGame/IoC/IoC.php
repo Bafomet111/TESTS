@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Modules\IoC;
+namespace App\Modules\SpaceGame\IoC;
 
-use App\Modules\IoC\StorageSingleton\IoCStorage;
-use App\Modules\IoC\Exceptions\DependencyNotFound;
+use App\Modules\SpaceGame\IoC\StorageSingleton\IoCStorage;
+use App\Modules\SpaceGame\IoC\Exceptions\DependencyNotFound;
 
 class IoC implements IContainer
 {
