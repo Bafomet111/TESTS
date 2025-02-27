@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Ioc;
 
 use App\Modules\IoC\Commands\ICommand;
-use App\Modules\IoC\Exceptions\CommandNotFoundException;
-use App\Modules\IoC\IoCContainer;
+use App\Modules\IoC\Exceptions\DependencyNotFound;
+use App\Modules\IoC\IoC;
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\TestCase;
 
@@ -17,7 +17,7 @@ class IoCTest extends TestCase
      */
     public function testResolveReturnsICommand(): void
     {
-        $registerCommand = IoCContainer::resolve('ioc.register', 'demonstration', fn ($message) =>
+        $registerCommand = IoC::resolve('ioc.register', 'demonstration', fn ($message) =>
             $this->createMock(ICommand::class),
         );
 
@@ -29,14 +29,14 @@ class IoCTest extends TestCase
      */
     public function testCommandNotFound(): void
     {
-        $this->expectException(CommandNotFoundException::class);
+        $this->expectException(DependencyNotFound::class);
 
-        IoCContainer::resolve('demonstration', 'this is demonstration command');
+        IoC::resolve('demonstration', 'this is demonstration command');
     }
 
     /**
      * @throws Exception
-     * @throws CommandNotFoundException
+     * @throws DependencyNotFound
      */
     public function testResolveRegisteredCommand(): void
     {
@@ -45,13 +45,13 @@ class IoCTest extends TestCase
         $mock = $this->createMock(ICommand::class);
         $mock->method('execute')->willThrowException(new \Exception($message));
 
-        IoCContainer::resolve(
+        IoC::resolve(
             'ioc.register',
             'demonstration',
             fn ($message) => $mock,
         )->execute();
 
-        $command = IoCContainer::resolve('demonstration', $message);
+        $command = IoC::resolve('demonstration', $message);
 
         $this->expectException(\Exception::class);
         $this->expectExceptionMessage($message);
