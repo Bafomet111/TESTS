@@ -34,8 +34,6 @@ class AdapterGenerationTest extends TestCase
         $checkString = md5((string) microtime(true));
         eval('interface ITesting { public function getAboba(): string; }');
 
-        $interface = new \ReflectionClass(\ITesting::class);
-
         IoC::resolve(
             'ioc.register',
             'Spaceship.Operations.ITesting:aboba.get',
