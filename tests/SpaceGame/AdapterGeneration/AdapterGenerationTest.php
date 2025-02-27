@@ -11,7 +11,7 @@ use App\Modules\SpaceGame\Moving\IMovable;
 use App\Modules\SpaceGame\IoC\Exceptions\DependencyNotFound;
 use App\Modules\SpaceGame\GeneratingAdapter\Providers\AdapterGenerationServiceProvider;
 
-class TestAdapterGeneration extends TestCase
+class AdapterGenerationTest extends TestCase
 {
     /**
      * @throws DependencyNotFound
