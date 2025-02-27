@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Modules\SpaceGame\IoC\ValueObjects;
+namespace App\Modules\SpaceGame\GeneratingAdapter\ValueObjects;
 
 class AdapterBuilderVO
 {

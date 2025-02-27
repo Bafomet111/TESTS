@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace App\Modules\SpaceGame\IoC\Providers;
+namespace App\Modules\SpaceGame\GeneratingAdapter\Providers;
 
-use App\Modules\SpaceGame\IoC\Commands\AdapterBuilding\BuilderMacroCommand;
-use App\Modules\SpaceGame\IoC\Commands\AdapterBuilding\ClassNameCommand;
-use App\Modules\SpaceGame\IoC\Commands\AdapterBuilding\ConstructorCommand;
-use App\Modules\SpaceGame\IoC\Commands\AdapterBuilding\InterfaceCommand;
-use App\Modules\SpaceGame\IoC\Commands\AdapterBuilding\MethodsCommand;
+use App\Modules\SpaceGame\GeneratingAdapter\Commands\BuilderMacroCommand;
+use App\Modules\SpaceGame\GeneratingAdapter\Commands\ClassNameCommand;
+use App\Modules\SpaceGame\GeneratingAdapter\Commands\ConstructorCommand;
+use App\Modules\SpaceGame\GeneratingAdapter\Commands\InterfaceCommand;
+use App\Modules\SpaceGame\GeneratingAdapter\Commands\MethodsCommand;
+use App\Modules\SpaceGame\GeneratingAdapter\ValueObjects\AdapterBuilderVO;
 use App\Modules\SpaceGame\IoC\Exceptions\DependencyNotFound;
 use App\Modules\SpaceGame\IoC\IoC;
-use App\Modules\SpaceGame\IoC\ValueObjects\AdapterBuilderVO;
 
 final class AdapterGenerationServiceProvider implements ServiceProvider
 {

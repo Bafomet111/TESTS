@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 namespace SpaceGame\AdapterGeneration;
 
+use App\Modules\SpaceGame\GeneratingAdapter\Providers\AdapterGenerationServiceProvider;
 use App\Modules\SpaceGame\IoC\Exceptions\DependencyNotFound;
 use App\Modules\SpaceGame\IoC\IoC;
-use App\Modules\SpaceGame\IoC\Providers\AdapterGenerationServiceProvider;
 use App\Modules\SpaceGame\Moving\IMovable;
-use App\Modules\SpaceGame\UObject;
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\TestCase;
 

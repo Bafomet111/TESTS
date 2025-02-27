@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Modules\SpaceGame\IoC\Commands\AdapterBuilding;
+namespace App\Modules\SpaceGame\GeneratingAdapter\Commands;
 
+use App\Modules\SpaceGame\GeneratingAdapter\ValueObjects\AdapterBuilderVO;
 use App\Modules\SpaceGame\IoC\Commands\ICommand;
-use App\Modules\SpaceGame\IoC\ValueObjects\AdapterBuilderVO;
 
 final readonly class ConstructorCommand implements ICommand
 {

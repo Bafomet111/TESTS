@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Modules\SpaceGame\IoC\Providers;
+namespace App\Modules\SpaceGame\GeneratingAdapter\Providers;
 
 interface ServiceProvider
 {
