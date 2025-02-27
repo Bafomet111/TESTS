@@ -36,9 +36,11 @@ final class AdapterGenerationServiceProvider implements ServiceProvider
             'ioc.register',
             'Spaceship.Operations.Adapter.Generate.get',
             function ($interface, $propertyName, $returnType) {
+                $property = strtolower($propertyName);
+                $ioc = IoC::class;
                 return "
                     public function get{$propertyName}(): {$returnType} { 
-                        return IoC.resolve('Spaceship.Operations.{$interface}:position.get');
+                        return {$ioc}::resolve('Spaceship.Operations.{$interface}:{$property}.get');
                     }
                 ";
             }
@@ -55,9 +57,10 @@ final class AdapterGenerationServiceProvider implements ServiceProvider
             'Spaceship.Operations.Adapter.Generate.set',
             function (string $interface, string $propertyName, ?string $returnType, string $argPropertyName) {
                 $returnType = $returnType ?? 'void';
+                $ioc = IoC::class;
                 return "
                     public function set{$propertyName}(\${$argPropertyName}): {$returnType} { 
-                        IoC.Resolve('Spaceship.Operations.{$interface}:position.set', \$this->obj, \$$argPropertyName).execute(); 
+                        {$ioc}::resolve('Spaceship.Operations.{$interface}:{$argPropertyName}.set', \$this->obj, \$$argPropertyName).execute(); 
                     }
                 ";
             }

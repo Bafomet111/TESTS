@@ -17,6 +17,11 @@ class AdapterBuilderVO
         return $this->className;
     }
 
+    public function getMethods(): array
+    {
+        return $this->methods;
+    }
+
     public function setClassName(string $className): void
     {
         $this->className = $className;
